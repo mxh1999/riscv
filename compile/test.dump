@@ -1,0 +1,72 @@
+
+P_branches.om:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00010054 <_start>:
+   10054:	800001b7          	lui	gp,0x80000
+   10058:	00106093          	ori	ra,zero,1
+   1005c:	00c0006f          	jal	zero,10068 <s1>
+   10060:	11106093          	ori	ra,zero,273
+   10064:	11006093          	ori	ra,zero,272
+
+00010068 <s1>:
+   10068:	00206093          	ori	ra,zero,2
+   1006c:	018002ef          	jal	t0,10084 <s2>
+   10070:	11006093          	ori	ra,zero,272
+   10074:	11106093          	ori	ra,zero,273
+   10078:	04009a63          	bne	ra,zero,100cc <s3>
+   1007c:	11006093          	ori	ra,zero,272
+   10080:	11106093          	ori	ra,zero,273
+
+00010084 <s2>:
+   10084:	00306093          	ori	ra,zero,3
+   10088:	0002e133          	or	sp,t0,zero
+   1008c:	04318063          	beq	gp,gp,100cc <s3>
+   10090:	11106093          	ori	ra,zero,273
+   10094:	11006093          	ori	ra,zero,272
+
+00010098 <s4>:
+   10098:	00506093          	ori	ra,zero,5
+   1009c:	0211d863          	bge	gp,ra,100cc <s3>
+   100a0:	00606093          	ori	ra,zero,6
+   100a4:	0211f063          	bgeu	gp,ra,100c4 <s5>
+
+000100a8 <bad>:
+   100a8:	11106093          	ori	ra,zero,273
+
+000100ac <s7>:
+   100ac:	01006093          	ori	ra,zero,16
+   100b0:	02309263          	bne	ra,gp,100d4 <s8>
+
+000100b4 <s6>:
+   100b4:	00806093          	ori	ra,zero,8
+   100b8:	fe00c8e3          	blt	ra,zero,100a8 <bad>
+   100bc:	00906093          	ori	ra,zero,9
+   100c0:	fe30e6e3          	bltu	ra,gp,100ac <s7>
+
+000100c4 <s5>:
+   100c4:	00706093          	ori	ra,zero,7
+   100c8:	fe11c6e3          	blt	gp,ra,100b4 <s6>
+
+000100cc <s3>:
+   100cc:	00406093          	ori	ra,zero,4
+   100d0:	fc00d4e3          	bge	ra,zero,10098 <s4>
+
+000100d4 <s8>:
+   100d4:	01106093          	ori	ra,zero,17
+   100d8:	fc1098e3          	bne	ra,ra,100a8 <bad>
+   100dc:	01206093          	ori	ra,zero,18
+   100e0:	01406193          	ori	gp,zero,20
+
+000100e4 <_loop1>:
+   100e4:	00108093          	addi	ra,ra,1
+   100e8:	fe30cee3          	blt	ra,gp,100e4 <_loop1>
+   100ec:	0010d193          	srli	gp,ra,0x1
+
+000100f0 <_loop2>:
+   100f0:	403080b3          	sub	ra,ra,gp
+   100f4:	fe00dee3          	bge	ra,zero,100f0 <_loop2>
+   100f8:	00000013          	addi	zero,zero,0
+   100fc:	00000013          	addi	zero,zero,0
